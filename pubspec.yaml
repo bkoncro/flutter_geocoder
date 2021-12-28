@@ -9,6 +9,8 @@ flutter:
       android:
         package: com.aloisdeniel.geocoder
         pluginClass: GeocoderPlugin
+      ios:
+        pluginClass: GeocoderPlugin
 
 dependencies:
   flutter:
