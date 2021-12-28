@@ -31,7 +31,7 @@
       [self initializeGeocoder];
       [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
           if (error) {
-              return result(error.flutterError);
+              result(error.flutterError);
           }
           result([self placemarksToDictionary:placemarks]);
       }];
@@ -41,7 +41,7 @@
       [self initializeGeocoder];
       [self.geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
           if (error) {
-              return result(error.flutterError);
+              result(error.flutterError);
           }
           
           result([self placemarksToDictionary:placemarks]);
@@ -72,8 +72,8 @@
     for (int i = 0; i < placemarks.count; i++) {
         CLPlacemark* placemark = [placemarks objectAtIndex:i];
 
-        NSArray *lines = placemark.addressDictionary[@"FormattedAddressLines"];
-        
+        //NSArray *lines = placemark.addressDictionary[@"FormattedAddressLines"];
+
         NSDictionary *coordinates = nil;
 
         if(placemark.location) {
@@ -95,7 +95,7 @@
                                  @"postalCode": placemark.postalCode ?: [NSNull null],
                                  @"adminArea": placemark.administrativeArea ?: [NSNull null],
                                  @"subAdminArea": placemark.subAdministrativeArea ?: [NSNull null],
-                                 @"addressLine": [lines componentsJoinedByString:@", "] ?: [NSNull null]
+                                 @"addressLine": [NSNull null]
         };
         
         [results addObject:address];
